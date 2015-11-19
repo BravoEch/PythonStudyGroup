@@ -16,8 +16,6 @@ rw.newDisplay(width, height, name)
 # Display the state by drawing a cat at that x coordinate
 cat = dw.loadImage("cat.bmp")
 sleepydonald = dw.loadImage("sleepydonald.bmp")
-#Lives2 = 'Lives = 2'
-#Lives1 = 'Lives = 1'
 
 def updateDisplay(state):
     dw.fill(dw.blue)
@@ -37,7 +35,7 @@ def updateState(state):
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (((state[0]) < 350 and (state[0]>250)) and ((state[2]<250) and (state[2]>150)))):
+    if ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
         return True
     else:
         return False

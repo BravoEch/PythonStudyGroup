@@ -22,23 +22,24 @@ def updateDisplay(state):
     dw.fill(dw.blue)
     dw.draw(sleepydonald, (250, 250))
     dw.draw(cat, (state[0], state[2]))
-
+    label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
+    dw.draw(label, (850, 50))
 
 ################################################################
 
 # state -> state
 def updateState(state):
     if ((state[0]<0 or state[0]+100>1000) or (state[2]<0 or state[2]+100>800)):
-        return(state[0]-state[1], -state[1], state[2]-state[3], -state[3])
+        return(state[0]-state[1], -state[1], state[2]-state[3], -state[3], state[4])
     else:
-        return(state[0]+state[1],state[1],state[2]+state[3],state[3])
+        return(state[0]+state[1],state[1],state[2]+state[3],state[3], state[4])
 
 ################################################################
 
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (((state[0]) < 350 and (state[0]>250)) and ((state[2]<250) and (state[2]>150)))):
+    if ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
         return True
     else:
         return False
@@ -52,13 +53,13 @@ def handleEvent(state, event):
     if (event.type == pg.MOUSEBUTTONDOWN):
         newStateDX = randint(-10,10)
         newStateDY = randint(-10,10)
-        return((state[0],newStateDX,state[2],newStateDY))
+        return((state[0],newStateDX,state[2],newStateDY,state[4] - 1))
     else:
         return(state)
 
 ################################################################
 
-initState = (randint(50,499),randint(-5,5),randint(50,499),randint(-5,5))
+initState = (randint(50,499),randint(-5,5),randint(50,499),randint(-5,5), 2)
 
 # Run the simulation no faster than 60 frames per second
 frameRate = 10
