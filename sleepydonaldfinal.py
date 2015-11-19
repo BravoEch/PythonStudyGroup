@@ -28,7 +28,10 @@ def updateDisplay(state):
 
 # state -> state
 def updateState(state):
-    return((state[0]+state[1],state[1],state[2]+state[3], state[3]))
+    if ((state[0]<0 or state[0]+100>1000) or (state[2]<0 or state[2]+100>800)):
+        return(state[0]-state[1], -state[1], state[2]-state[3], -state[3])
+    else:
+        return(state[0]+state[1],state[1],state[2]+state[3],state[3])
 
 ################################################################
 
@@ -44,7 +47,7 @@ def endState(state):
 ################################################################
 
 # Mouse Click
-def handleEvent(state, event):  
+def handleEvent(state, event):
     print("Handling event: " + str(event))
     if (event.type == pg.MOUSEBUTTONDOWN):
         newStateDX = randint(-10,10)

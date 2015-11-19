@@ -23,28 +23,29 @@ def updateDisplay(state):
     dw.draw(sleepydonald, (250, 250))
     dw.draw(cat, (state[0], state[2]))
 
-
 ################################################################
 
 # state -> state
 def updateState(state):
-    return((state[0]+state[1],state[1],state[2]+state[3], state[3]))
+    if ((state[0]<0 or state[0]+100>1000) or (state[2]<0 or state[2]+100>800)):
+        return(state[0]-state[1], -state[1], state[2]-state[3], -state[3])
+    else:
+        return(state[0]+state[1],state[1],state[2]+state[3],state[3])
 
 ################################################################
 
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (((state[0]) < 350 and (state[0]>250)) and ((state[2]<250) and (state[2]>150)))):
+    if ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
         return True
     else:
         return False
 
-
 ################################################################
 
 # Mouse Click
-def handleEvent(state, event):  
+def handleEvent(state, event):
     print("Handling event: " + str(event))
     if (event.type == pg.MOUSEBUTTONDOWN):
         newStateDX = randint(-10,10)
