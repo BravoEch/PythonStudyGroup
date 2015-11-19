@@ -8,17 +8,19 @@ print(randint (1,5))
 
 # Initialize world
 name = "Press the mouse to change the cat's direction!"
-width = 500
-height = 500
+width = 1000
+height = 1000
 rw.newDisplay(width, height, name)
 
 ################################################################
 
 # Display the state by drawing a cat at that x coordinate
 cat = dw.loadImage("cat.bmp")
+sleepydonald = dw.loadImage("sleepydonald.bmp")
 
 def updateDisplay(state):
     dw.fill(dw.blue)
+    dw.draw(sleepydonald, (250, 250))
     dw.draw(cat, (state[0], state[2]))
 
 
@@ -33,7 +35,7 @@ def updateState(state):
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0)):
+    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (((state[0]) < 350 and (state[0]>250)) and ((state[2]<250) and (state[2]>150)))):
         return True
     else:
         return False
