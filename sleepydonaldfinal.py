@@ -53,7 +53,7 @@ def handleEvent(state, event):
     if (event.type == pg.MOUSEBUTTONDOWN):
         newStateDX = randint(-10,10)
         newStateDY = randint(-10,10)
-        return((state[0],newStateDX,state[2],newStateDY,state[4] - 1))
+        return((state[0],newStateDX,state[2],newStateDY,state[4]))
     else:
         return(state)
 
