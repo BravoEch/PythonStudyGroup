@@ -46,8 +46,10 @@ def updateDisplay(state):
 
 # state -> state
 def updateState(state):
-    if ((state[0]<0 or state[0]+100>1000) or (state[2]<0 or state[2]+100>800)):
-        return(state[0]-state[1], -state[1], state[2]-state[3], -state[3], state[4])
+    if (state[0]<0 or state[0]+100>1000):
+        return(state[0]-state[1], -state[1],state[2]+state[3],state[3],state[4])
+    elif (state[2]<0 or state[2]+100>800):
+        return(state[0]+state[1],state[1],state[2]-state[3], -state[3], state[4])
     elif ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
         return (state[0]-state[1],-state[1],state[2]-state[3], -state[3], (state[4] - 1))
     else:
