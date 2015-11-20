@@ -87,3 +87,5 @@ frameRate = 10
 # Run the simulation!
 rw.runWorld(initState, updateDisplay, updateState, handleEvent,
             endState, frameRate)
+
+pg.quit()
