@@ -7,7 +7,7 @@ print(randint (1,5))
 ################################################################
 
 # Initialize world
-name = "DON'T WAKE UP DONALD!"
+name = "DON'T WAKE DONALD!"
 width = 1000
 height = 1000
 rw.newDisplay(width, height, name)
@@ -50,7 +50,7 @@ def updateState(state):
         return(state[0]-state[1], -state[1],state[2]+state[3],state[3],state[4])
     elif (state[2]<0 or state[2]+100>800):
         return(state[0]+state[1],state[1],state[2]-state[3], -state[3], state[4])
-    elif ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
+    elif ((state[0]<425 and state[0]>200) and (state[2]<450 and state[2]>200)):
         return (state[0]-state[1],-state[1],state[2]-state[3], -state[3], (state[4] - 1))
     else:
         return(state[0]+state[1],state[1],state[2]+state[3],state[3], state[4])
