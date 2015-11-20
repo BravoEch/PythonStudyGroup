@@ -17,19 +17,39 @@ rw.newDisplay(width, height, name)
 # Display the state by drawing a cat at that x coordinate
 cat = dw.loadImage("cat.bmp")
 sleepydonald = dw.loadImage("sleepydonald.bmp")
+angrydonald = dw.loadImage("angrydonald.bmp")
+donald = dw.loadImage("donald3.bmp")
+gameover = dw.loadImage("gameOver.bmp")
 
 def updateDisplay(state):
-    dw.fill(dw.blue)
-    dw.draw(sleepydonald, (250, 250))
-    dw.draw(cat, (state[0], state[2]))
-    label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
-    dw.draw(label, (850, 50))
+
+    if state[4] == (2):
+        label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
+        dw.fill(dw.blue)
+        dw.draw(sleepydonald, (250, 250))
+        dw.draw(cat, (state[0], state[2]))
+        dw.draw(label, (850, 50))
+    elif state[4] == (1):
+        label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
+        dw.fill(dw.red)
+        dw.draw(angrydonald, (250, 250))
+        dw.draw(cat, (state[0], state[2]))
+        dw.draw(label, (850, 50))
+    else:
+        dw.fill(dw.black)
+        dw.draw(donald, (100, 100))
+        dw.draw(gameover, (350, 350))
+
+
+
 ################################################################
 
 # state -> state
 def updateState(state):
     if ((state[0]<0 or state[0]+100>1000) or (state[2]<0 or state[2]+100>800)):
         return(state[0]-state[1], -state[1], state[2]-state[3], -state[3], state[4])
+    elif ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
+        return (state[0]-state[1],-state[1],state[2]-state[3], -state[3], (state[4] - 1))
     else:
         return(state[0]+state[1],state[1],state[2]+state[3],state[3], state[4])
 
@@ -38,7 +58,7 @@ def updateState(state):
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0]<250 and state[0]>150) and (state[2]<250 and state[2]>150)):
+    if state[4] == -1:
         return True
     else:
         return False
@@ -51,7 +71,7 @@ def handleEvent(state, event):
     if (event.type == pg.MOUSEBUTTONDOWN):
         newStateDX = randint(-10,10)
         newStateDY = randint(-10,10)
-        return((state[0],newStateDX,state[2],newStateDY,state[4] - 1))
+        return(state[0],newStateDX,state[2],newStateDY, state[4])
     else:
         return(state)
 
