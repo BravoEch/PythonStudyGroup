@@ -26,13 +26,13 @@ def updateDisplay(state):
     if state[4] == (2):
         label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
         dw.fill(dw.blue)
-        dw.draw(sleepydonald, (250, 250))
+        dw.draw(sleepydonald, (350, 250))
         dw.draw(cat, (state[0], state[2]))
         dw.draw(label, (850, 50))
     elif state[4] == (1):
         label = dw.makeLabel("Lives = " + str(state[4]), 'serif', 20, (255, 255, 255))
         dw.fill(dw.red)
-        dw.draw(angrydonald, (250, 250))
+        dw.draw(angrydonald, (350, 250))
         dw.draw(cat, (state[0], state[2]))
         dw.draw(label, (850, 50))
     else:
@@ -50,7 +50,7 @@ def updateState(state):
         return(state[0]-state[1], -state[1],state[2]+state[3],state[3],state[4])
     elif (state[2]<0 or state[2]+100>800):
         return(state[0]+state[1],state[1],state[2]-state[3], -state[3], state[4])
-    elif ((state[0]<425 and state[0]>200) and (state[2]<450 and state[2]>200)):
+    elif ((state[0]<525 and state[0]>300) and (state[2]<550 and state[2]>250)):
         return (state[0]-state[1],-state[1],state[2]-state[3], -state[3], (state[4] - 1))
     else:
         return(state[0]+state[1],state[1],state[2]+state[3],state[3], state[4])

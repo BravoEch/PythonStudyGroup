@@ -31,11 +31,11 @@ def updateState(state):
     return((state[0]+state[1],state[1],state[2]+state[3], state[3]))
 
 ################################################################
-
+#((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or
 # End Simulation
 # state -> bool
 def endState(state):
-    if ((state[0] > width or state[0] < 0) or (state[2] > height or state[2] < 0) or (((state[0]) < 350 and (state[0]>250)) and ((state[2]<250) and (state[2]>150)))):
+    if ((state[0] < 500 and state[0] > 250) and (state[2] < 250 and state[2]>150)):
         return True
     else:
         return False
