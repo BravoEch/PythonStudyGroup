@@ -7,7 +7,7 @@ print(randint (1,5))
 ################################################################
 
 # Initialize world
-name = "Press the mouse to change the cat's direction!"
+name = "DON'T WAKE UP DONALD!"
 width = 1000
 height = 1000
 rw.newDisplay(width, height, name)
