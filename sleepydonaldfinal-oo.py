@@ -68,7 +68,7 @@ def updateState(state):
         state.x = state.x+state.dx
         state.y = state.y-state.dy
         state.dy = -state.dy
-    elif ((state.x<525 and state.x>300) and (state.y<550 and state.y>250)):
+    elif ((state.x<425 and state.x>200) and (state.y<450 and state.y>200)):
         state.x = state.x-state.dx
         state.dx = -state.dx
         state.y = state.y-state.dy
